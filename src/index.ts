@@ -1,25 +1,28 @@
 import { Client } from "@notionhq/client";
 import { TodoistApi } from "@doist/todoist-api-typescript";
 import dotenv from "dotenv";
-import { getBookInformation } from "./util";
+import { generateReadingDBPayload, getBookInformation } from "./util";
 import Notion from "./Notion";
+import Todoist from "./Todoist";
+import { books } from "./books2";
 
 dotenv.config();
 
 async function main() {
   const notion = new Notion();
 
-  const result = await notion.addEntryToDatabase("Hui boo");
+  //const result = await notion.addEntryToDatabase("Hui boo");
 
+  //console.log(books);
+
+  console.log(books[0]);
+  const result = await notion.addPage(generateReadingDBPayload(books[0]));
   console.log("hello", result);
-  /*const api = new TodoistApi(process.env.TODOIST_TOKEN ?? "");
 
-  try {
-    const tasks = await api.getTasks({
-      projectId: process.env.TODOIST_PROJECT_ID,
-    });
-    console.log("Tasks:", getBookInformation(tasks));
-  } catch (e) {} */
+  // const todoist = new Todoist();
+
+  //  const tasks = await todoist.getTasks();
+  // console.log("Tasks:", getBookInformation(tasks));
 }
 
 main()

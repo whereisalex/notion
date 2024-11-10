@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import { CreatePageParameters } from "@notionhq/client/build/src/api-endpoints";
 
 class Notion {
   private notion: Client;
@@ -31,7 +32,16 @@ class Notion {
     }
   }
 
-  async queryDatabase(databaseId: string, filter: any) {
+  async addPage(payload: CreatePageParameters) {
+    try {
+      const response = await this.notion.pages.create(payload);
+      return response;
+    } catch (error) {
+      console.error("Error adding entry to database:", error);
+    }
+  }
+
+  async queryDatabase() {
     try {
       const response = await this.notion.databases.query({
         database_id: process.env.NOTION_DATABASE_ID ?? "",

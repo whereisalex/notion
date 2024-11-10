@@ -1,4 +1,4 @@
-import { Book } from "./types";
+import { Book } from "./todoist/types";
 
 export const books: Book[] = [
   {

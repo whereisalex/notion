@@ -1,5 +1,5 @@
 import { Task } from "@doist/todoist-api-typescript";
-import { Book } from "./types";
+import { Book } from "./todoist/types";
 import fs from "fs";
 
 export const getBookInformation = (tasks: Task[]) => {

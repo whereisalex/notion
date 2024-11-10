@@ -1,16 +1,12 @@
-import { Client } from "@notionhq/client";
-import { TodoistApi } from "@doist/todoist-api-typescript";
 import dotenv from "dotenv";
 import {
   generateReadingDBPayload,
   getBookInformation,
   logResultToFile,
 } from "./util";
-import Notion from "./Notion";
-import Todoist from "./Todoist";
-import { books } from "./books";
-import fs from "fs";
-import { Book } from "./types";
+import Notion from "./notion/Notion";
+import Todoist from "./todoist/Todoist";
+import { Book } from "./todoist/types";
 
 dotenv.config();
 

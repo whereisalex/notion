@@ -4,7 +4,9 @@ import dotenv from "dotenv";
 import { generateReadingDBPayload, getBookInformation } from "./util";
 import Notion from "./Notion";
 import Todoist from "./Todoist";
-import { books } from "./books2";
+import { books } from "./books";
+import fs from "fs";
+import { Book } from "./types";
 
 dotenv.config();
 

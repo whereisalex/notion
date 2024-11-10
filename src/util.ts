@@ -1,5 +1,6 @@
 import { Task } from "@doist/todoist-api-typescript";
 import { Book } from "./types";
+import fs from "fs";
 
 export const getBookInformation = (tasks: Task[]) => {
   if (!tasks || !tasks.length) return [];
@@ -73,3 +74,11 @@ export const generateReadingDBPayload = (book: Book) => ({
     },
   },
 });
+
+export const logResultToFile = async (result: any) => {
+  await fs.appendFile("results.log", JSON.stringify(result) + "\n", (err) => {
+    if (err) {
+      console.error("Failed to write to file", err);
+    }
+  });
+};

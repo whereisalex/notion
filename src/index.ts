@@ -1,5 +1,7 @@
 import { Client } from "@notionhq/client";
+import { TodoistApi } from "@doist/todoist-api-typescript";
 import dotenv from "dotenv";
+import { getBookInformation } from "./util";
 
 dotenv.config();
 
@@ -13,6 +15,15 @@ async function main() {
   });
 
   console.log("Got response:", response);
+
+  const api = new TodoistApi(process.env.TODOIST_TOKEN ?? "");
+
+  try {
+    const tasks = await api.getTasks({
+      projectId: process.env.TODOIST_PROJECT_ID,
+    });
+    console.log("Tasks:", getBookInformation(tasks));
+  } catch (e) {}
 }
 
 main()

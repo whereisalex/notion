@@ -10,7 +10,7 @@ import { Book } from "./todoist/types";
 
 dotenv.config();
 
-async function main() {
+const syncTasksToBooks = async () => {
   const notion = new Notion();
   const todoist = new Todoist();
 
@@ -23,6 +23,10 @@ async function main() {
       await logResultToFile(result);
     })
   );
+};
+
+async function main() {
+  await syncTasksToBooks();
 }
 
 main()

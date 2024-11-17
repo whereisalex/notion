@@ -17,8 +17,8 @@ export const getBookInformation = (tasks: Task[]) => {
   });
 };
 
-export const generateReadingDBPayload = (book: Book) => ({
-  parent: { database_id: process.env.NOTION_DATABASE_ID ?? "" },
+export const generateReadingDBPayload = (dataBaseId: string, book: Book) => ({
+  parent: { database_id: dataBaseId },
   properties: {
     Name: {
       title: [

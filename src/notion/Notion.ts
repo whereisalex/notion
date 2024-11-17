@@ -41,10 +41,10 @@ class Notion {
     }
   }
 
-  async queryDatabase() {
+  async queryDatabase(dataBaseId: string) {
     try {
       const response = await this.notion.databases.query({
-        database_id: process.env.NOTION_DATABASE_ID ?? "",
+        database_id: dataBaseId,
       });
       return response.results;
     } catch (error) {

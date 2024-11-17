@@ -7,11 +7,9 @@ class Todoist {
     this.api = new TodoistApi(process.env.TODOIST_TOKEN ?? "");
   }
 
-  public async getTasks() {
+  public async getTasks(projectId: string) {
     try {
-      const response = await this.api.getTasks({
-        projectId: process.env.TODOIST_PROJECT_ID,
-      });
+      const response = await this.api.getTasks({ projectId });
       return response;
     } catch (error) {
       console.error("Error fetching tasks:", error);

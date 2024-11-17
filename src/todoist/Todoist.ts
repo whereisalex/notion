@@ -16,6 +16,16 @@ class Todoist {
       throw error;
     }
   }
+
+  public async getSection(sectionId: string) {
+    try {
+      const response = await this.api.getSection(sectionId);
+      return response;
+    } catch (error) {
+      console.error("Error fetching section:", error);
+      throw error;
+    }
+  }
 }
 
 export default Todoist;

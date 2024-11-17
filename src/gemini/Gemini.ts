@@ -1,10 +1,10 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GenerativeModel, GoogleGenerativeAI } from "@google/generative-ai";
 
 const GEMINI_MODEL = "gemini-1.5-flash";
 
 class Gemini {
-  private genAI: any;
-  private model: any;
+  private genAI: GoogleGenerativeAI;
+  private model: GenerativeModel;
 
   constructor() {
     this.genAI = new GoogleGenerativeAI(process.env.GEMINI_TOKEN ?? "");
@@ -12,7 +12,8 @@ class Gemini {
   }
 
   async runPrompt(prompt: string) {
-    return await this.model.generateContent([prompt]);
+    const result = await this.model.generateContent([prompt]);
+    return result.response.text();
   }
 }
 
